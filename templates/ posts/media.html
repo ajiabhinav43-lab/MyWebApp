@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>My Files</h2>
+<ul>
+  {% for file in files %}
+    <li>
+      <a href="{{ file.s3_url }}" target="_blank">{{ file.filename }}</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
