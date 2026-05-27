@@ -1,0 +1,19 @@
+[2026-05-27 08:06:22 +0000] [49863] [INFO] Starting gunicorn 21.2.0
+[2026-05-27 08:06:22 +0000] [49863] [INFO] Listening at: http://127.0.0.1:8000 (49863)
+[2026-05-27 08:06:22 +0000] [49863] [INFO] Using worker: sync
+[2026-05-27 08:06:22 +0000] [49868] [INFO] Booting worker with pid: 49868
+[2026-05-27 08:06:22 +0000] [49869] [INFO] Booting worker with pid: 49869
+[2026-05-27 08:06:22 +0000] [49870] [INFO] Booting worker with pid: 49870
+[2026-05-27 08:06:23 +0000] [49871] [INFO] Booting worker with pid: 49871
+[2026-05-27 08:06:34 +0000] [49881] [INFO] Starting gunicorn 21.2.0
+[2026-05-27 08:06:34 +0000] [49881] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2026-05-27 08:06:34 +0000] [49881] [ERROR] Retrying in 1 second.
+[2026-05-27 08:06:35 +0000] [49881] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2026-05-27 08:06:35 +0000] [49881] [ERROR] Retrying in 1 second.
+[2026-05-27 08:06:36 +0000] [49881] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2026-05-27 08:06:36 +0000] [49881] [ERROR] Retrying in 1 second.
+[2026-05-27 08:06:37 +0000] [49881] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2026-05-27 08:06:37 +0000] [49881] [ERROR] Retrying in 1 second.
+[2026-05-27 08:06:38 +0000] [49881] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2026-05-27 08:06:38 +0000] [49881] [ERROR] Retrying in 1 second.
+[2026-05-27 08:06:39 +0000] [49881] [ERROR] Can't connect to ('127.0.0.1', 8000)

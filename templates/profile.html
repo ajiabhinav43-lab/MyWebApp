@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center">
+  <img src="{{ user.profile_pic }}" width="100" class="rounded-circle">
+  <h3>{{ user.username }}</h3>
+</div>
+
+<hr>
+
+{% for post in posts %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5>{{ post.title }}</h5>
+    <p>{{ post.content }}</p>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

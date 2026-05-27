@@ -11,13 +11,13 @@ class Config:
     # SQLAlchemy database URI
     SQLALCHEMY_DATABASE_URI = os.getenv(
         'DATABASE_URL',
-        'mysql+pymysql://root:password@localhost/mywebapp_db'
+        '"mysql+pymysql://admin:Abhi_2026@mywebapp-db.cfm6sao8erum.ap-south-1.rds.amazonaws.com/myappdb'
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # AWS S3 configuration
-    AWS_ACCESS_KEY_ID     = os.getenv('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID     = os.getenv('AWS_ACCESS_KEY')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRETS_ACCESS_KEY')
     AWS_REGION            = os.getenv('AWS_REGION', 'ap-south-1')
     S3_BUCKET_NAME        = os.getenv('S3_BUCKET_NAME', 'myapp-media-uploads')
 

@@ -1,5 +1,49 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h2>Welcome {{ current_user.username if current_user.is_authenticated else "Guest" }}</h2>
+
+<div class="col-md-6 mx-auto">
+
+{% for post in posts %}
+<div class="card mb-4">
+
+  <div class="card-header">
+    <a href="/profile/{{ post.author.username }}">
+      {{ post.author.username }}
+    </a>
+  </div>
+
+  <div class="card-body">
+    <h5>{{ post.title }}</h5>
+    <p>{{ post.content }}</p>
+
+    {% if post.image %}
+      <img src="{{ post.image }}" class="img-fluid">
+    {% endif %}
+  </div>
+
+  <div class="card-footer">
+    <a href="/like/{{ post.id }}">❤️ Like</a>
+  </div>
+
+  <div class="p-2">
+
+    {% for comment in post.comments %}
+      <div class="comment-box">
+        <b>{{ comment.user.username }}</b>: {{ comment.content }}
+      </div>
+    {% endfor %}
+
+    {% if current_user.is_authenticated %}
+    <form method="POST" action="/comment/{{ post.id }}">
+      <input type="text" name="content" class="form-control mt-2" placeholder="Comment..." required>
+    </form>
+    {% endif %}
+
+  </div>
+
+</div>
+{% endfor %}
+
+</div>
+
 {% endblock %}
