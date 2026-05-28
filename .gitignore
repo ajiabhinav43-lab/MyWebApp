@@ -4,15 +4,16 @@ __pycache__/
 *.pyo
 *.pyd
 *.sqlite3
+
 # Virtual Environment
 venv/
 env/
 .venv/
 
-# Environment variables
+# Environment variables (KEEP SECRET)
 .env
 
-# PyCharm
+# IDE
 .idea/
 
 # OS files
@@ -21,5 +22,6 @@ Thumbs.db
 
 # Logs
 *.log
-config.py
-config.py
+
+# Optional: backup files
+*.save
