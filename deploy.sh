@@ -1,21 +1,20 @@
 #!/bin/bash
 
-echo "=============================="
-echo "🚀 Starting Deployment"
-echo "=============================="
+echo "🚀 Pulling latest image..."
+docker pull abhinav0824/mywebapp:latest
 
-cd /home/ubuntu/MyWebApp || exit
+echo "🛑 Stopping old container..."
+docker stop mywebapp-container || true
 
-echo "📥 Pulling latest code..."
-git pull origin main
+echo "🗑️ Removing old container..."
+docker rm mywebapp-container || true
 
-echo "📦 Installing dependencies..."
-source venv/bin/activate
-pip install -r requirements.txt
+echo "🚀 Starting new container..."
+docker run -d \
+  --name mywebapp-container \
+  -p 8000:8000 \
+  --env-file .env \
+  --restart always \
+  abhinav0824/mywebapp:latest
 
-echo "🔄 Restarting application..."
-sudo systemctl restart mywebapp
-
-echo "=============================="
-echo "✅ Deployment Completed Successfully"
-echo "=============================="
+echo "✅ Deployment complete!"

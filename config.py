@@ -11,7 +11,7 @@ class Config:
     # SQLAlchemy database URI
     SQLALCHEMY_DATABASE_URI = os.getenv(
         'DATABASE_URL',
-        '"mysql+pymysql://admin:Abhi_2026@mywebapp-db.cfm6sao8erum.ap-south-1.rds.amazonaws.com/myappdb'
+        'mysql+pymysql://appuser:Abhi_2026@localhost/myappdb'
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
