@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="form-card">
+        <h2>Add Doctor</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input class="form-control mb-3" name="name" placeholder="Doctor Name" required>
+            <input class="form-control mb-3" name="department" placeholder="Department" required>
+            <input class="form-control mb-3" name="qualification" placeholder="Qualification" required>
+            <input class="form-control mb-3" name="experience" placeholder="Experience" required>
+            <input class="form-control mb-3" name="specialization" placeholder="Specialization" required>
+            <input class="form-control mb-3" name="successful_surgeries" placeholder="Successful Surgeries / Cases" required>
+            <textarea class="form-control mb-3" name="achievements" placeholder="Achievements" required></textarea>
+
+            <label>Doctor Image Upload</label>
+            <input class="form-control mb-3" type="file" name="image">
+
+            <label>Or Image URL</label>
+            <input class="form-control mb-3" name="image_url" placeholder="Image URL">
+
+            <button class="btn btn-success w-100">Add Doctor</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
