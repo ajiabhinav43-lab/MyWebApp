@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
-
 {% block content %}
-<div class="card p-4 mx-auto" style="max-width: 400px;">
-  <h3 class="text-center mb-3">🔐 Login</h3>
 
-  <form method="POST">
-    <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
+<div class="container mt-5">
+    <div class="form-card mx-auto">
+        <h2>Login</h2>
 
-    <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
-
-    <button class="btn btn-primary w-100">Login</button>
-  </form>
+        <form method="POST">
+            <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
+            <input class="form-control mb-3" type="password" name="password" placeholder="Password" required>
+            <button class="btn btn-success w-100">Login</button>
+        </form>
+    </div>
 </div>
+
 {% endblock %}
