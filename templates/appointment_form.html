@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="form-card">
+        <h2>Book Appointment</h2>
+
+        <form method="POST">
+            <input class="form-control mb-3" name="patient_name" placeholder="Patient Name" required>
+            <input class="form-control mb-3" name="patient_age" placeholder="Age" required>
+            <input class="form-control mb-3" name="patient_phone" placeholder="Phone Number" required>
+
+            <select class="form-control mb-3" name="doctor_id" required>
+                <option value="">Select Doctor</option>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.name }} - {{ doctor.department }}</option>
+                {% endfor %}
+            </select>
+
+            <textarea class="form-control mb-3" name="patient_problem" placeholder="Describe health issue" required></textarea>
+
+            <input class="form-control mb-3" type="date" name="appointment_date" required>
+            <input class="form-control mb-3" type="time" name="appointment_time" required>
+
+            <button class="btn btn-success w-100">Submit Appointment</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
