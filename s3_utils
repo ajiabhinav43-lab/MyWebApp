@@ -1,0 +1,36 @@
+import os
+import uuid
+import boto3
+from botocore.exceptions import ClientError
+from werkzeug.utils import secure_filename
+
+
+def upload_file_to_s3(file, filename):
+    bucket = os.getenv("S3_BUCKET_NAME")
+    region = os.getenv("AWS_REGION", "ap-south-1")
+
+    if not bucket:
+        return None
+
+    safe_name = secure_filename(filename)
+    unique_name = f"doctors/{uuid.uuid4()}-{safe_name}"
+
+    s3 = boto3.client(
+        "s3",
+        aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
+        region_name=region
+    )
+
+    try:
+        s3.upload_fileobj(
+            file,
+            bucket,
+            unique_name,
+            ExtraArgs={"ContentType": file.content_type}
+        )
+
+        return f"https://{bucket}.s3.{region}.amazonaws.com/{unique_name}"
+
+    except ClientError:
+        return None
