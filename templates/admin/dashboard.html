@@ -1,9 +1,22 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-<h2>Admin Dashboard</h2>
 
-<p>Total Users: {{ stats.total_users }}</p>
-<p>Total Posts: {{ stats.total_posts }}</p>
-<p>Total Media: {{ stats.total_media }}</p>
+<div class="container mt-5">
+    <h2 class="section-title">Admin Dashboard</h2>
+
+    <div class="row">
+        <div class="col-md-3"><div class="stat-card"><h3>{{ doctor_count }}</h3><p>Doctors</p></div></div>
+        <div class="col-md-3"><div class="stat-card"><h3>{{ appointment_count }}</h3><p>Appointments</p></div></div>
+        <div class="col-md-3"><div class="stat-card"><h3>{{ campaign_count }}</h3><p>Campaigns</p></div></div>
+        <div class="col-md-3"><div class="stat-card"><h3>{{ patient_count }}</h3><p>Recent Patients</p></div></div>
+    </div>
+
+    <div class="mt-4">
+        <a href="/admin/doctor/add" class="btn btn-success">Add Doctor</a>
+        <a href="/admin/campaign/add" class="btn btn-primary">Add Campaign</a>
+        <a href="/admin/recent-patients" class="btn btn-warning">Manage Recent Patients</a>
+        <a href="/appointments" class="btn btn-dark">View Appointments</a>
+    </div>
+</div>
 
 {% endblock %}
