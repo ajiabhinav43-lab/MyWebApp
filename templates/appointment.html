@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="section-title">Appointments</h2>
+
+    <a href="/appointment/new" class="btn btn-success mb-3">New Appointment</a>
+
+    <div class="table-responsive glass-box">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Letter</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.patient_name }}</td>
+                    <td>{{ appointment.doctor.name }}</td>
+                    <td>{{ appointment.appointment_date }}</td>
+                    <td>{{ appointment.appointment_time }}</td>
+                    <td><span class="badge bg-warning">{{ appointment.status }}</span></td>
+                    <td>
+                        <a href="/appointment/{{ appointment.id }}/letter" class="btn btn-sm btn-primary">Read</a>
+                        <a href="/appointment/{{ appointment.id }}/download" class="btn btn-sm btn-success">Download</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
