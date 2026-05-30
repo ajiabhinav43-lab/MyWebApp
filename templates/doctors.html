@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="section-title">Our Specialist Doctors</h2>
+
+    <div class="mb-4">
+        <a href="/doctors" class="btn btn-outline-primary btn-sm">All</a>
+        {% for dept in departments %}
+            <a href="/doctors?department={{ dept[0] }}" class="btn btn-outline-primary btn-sm">{{ dept[0] }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for doctor in doctors %}
+        <div class="col-md-4 mb-4">
+            <div class="card doctor-card h-100">
+                <img src="{{ doctor.image_url }}" class="card-img-top doctor-img">
+                <div class="card-body">
+                    <h4>{{ doctor.name }}</h4>
+                    <p class="badge bg-info">{{ doctor.department }}</p>
+                    <p><strong>Qualification:</strong> {{ doctor.qualification }}</p>
+                    <p><strong>Experience:</strong> {{ doctor.experience }}</p>
+                    <a href="/doctor/{{ doctor.id }}" class="btn btn-success w-100">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
