@@ -1,49 +1,85 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col-md-6 mx-auto">
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-md-7">
+                <h1>Advanced Healthcare With Trusted Doctors</h1>
+                <p>
+                    Book appointments, meet expert doctors, view health campaigns, and manage your hospital visits in one place.
+                </p>
+                <a href="/appointment/new" class="btn btn-success btn-lg">Get Appointment</a>
+                <a href="/doctors" class="btn btn-outline-light btn-lg ms-2">View Doctors</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-{% for post in posts %}
-<div class="card mb-4">
+<section class="container mt-5">
+    <h2 class="section-title">Departments & Doctors</h2>
+    <div class="row">
+        {% for doctor in doctors %}
+        <div class="col-md-3 mb-4">
+            <div class="card doctor-card h-100">
+                <img src="{{ doctor.image_url }}" class="card-img-top doctor-img">
+                <div class="card-body">
+                    <h5>{{ doctor.name }}</h5>
+                    <p class="text-muted">{{ doctor.department }}</p>
+                    <p>{{ doctor.specialization[:80] }}...</p>
+                    <a href="/doctor/{{ doctor.id }}" class="btn btn-primary w-100">View Profile</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
-  <div class="card-header">
-    <a href="/profile/{{ post.author.username }}">
-      {{ post.author.username }}
-    </a>
-  </div>
+<section class="container mt-5">
+    <h2 class="section-title">Recently Visited Patients</h2>
+    <div class="table-responsive glass-box">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Department</th>
+                    <th>Doctor</th>
+                    <th>Diagnosis</th>
+                    <th>Status</th>
+                    <th>Visit Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in recent_patients %}
+                <tr>
+                    <td>{{ patient.patient_name }}</td>
+                    <td>{{ patient.department }}</td>
+                    <td>{{ patient.doctor_name }}</td>
+                    <td>{{ patient.diagnosis }}</td>
+                    <td><span class="badge bg-success">{{ patient.status }}</span></td>
+                    <td>{{ patient.visit_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
 
-  <div class="card-body">
-    <h5>{{ post.title }}</h5>
-    <p>{{ post.content }}</p>
-
-    {% if post.image %}
-      <img src="{{ post.image }}" class="img-fluid">
-    {% endif %}
-  </div>
-
-  <div class="card-footer">
-    <a href="/like/{{ post.id }}">❤️ Like</a>
-  </div>
-
-  <div class="p-2">
-
-    {% for comment in post.comments %}
-      <div class="comment-box">
-        <b>{{ comment.user.username }}</b>: {{ comment.content }}
-      </div>
-    {% endfor %}
-
-    {% if current_user.is_authenticated %}
-    <form method="POST" action="/comment/{{ post.id }}">
-      <input type="text" name="content" class="form-control mt-2" placeholder="Comment..." required>
-    </form>
-    {% endif %}
-
-  </div>
-
-</div>
-{% endfor %}
-
-</div>
+<section class="container mt-5">
+    <h2 class="section-title">Upcoming Free Health Campaigns</h2>
+    <div class="row">
+        {% for campaign in campaigns %}
+        <div class="col-md-4 mb-3">
+            <div class="campaign-card">
+                <h5>{{ campaign.title }}</h5>
+                <p>{{ campaign.description }}</p>
+                <p><strong>Department:</strong> {{ campaign.department }}</p>
+                <p><strong>Date:</strong> {{ campaign.date }}</p>
+                <p><strong>Location:</strong> {{ campaign.location }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
 {% endblock %}
