@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="form-card">
+        <h2>Add Free Health Campaign</h2>
+
+        <form method="POST">
+            <input class="form-control mb-3" name="title" placeholder="Campaign Title" required>
+            <textarea class="form-control mb-3" name="description" placeholder="Description" required></textarea>
+            <input class="form-control mb-3" name="department" placeholder="Department" required>
+            <input class="form-control mb-3" type="date" name="date" required>
+            <input class="form-control mb-3" name="location" placeholder="Location" required>
+
+            <button class="btn btn-success w-100">Add Campaign</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
