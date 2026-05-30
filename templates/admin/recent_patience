@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="section-title">Recently Visited Patients</h2>
+
+    <div class="form-card mb-4">
+        <form method="POST">
+            <input class="form-control mb-3" name="patient_name" placeholder="Patient Name" required>
+            <input class="form-control mb-3" name="department" placeholder="Department" required>
+            <input class="form-control mb-3" name="doctor_name" placeholder="Doctor Name" required>
+            <input class="form-control mb-3" name="diagnosis" placeholder="Diagnosis" required>
+            <input class="form-control mb-3" name="status" placeholder="Status" required>
+            <input class="form-control mb-3" type="date" name="visit_date" required>
+            <button class="btn btn-success w-100">Add Patient Visit</button>
+        </form>
+    </div>
+
+    <div class="table-responsive glass-box">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Department</th>
+                    <th>Doctor</th>
+                    <th>Diagnosis</th>
+                    <th>Status</th>
+                    <th>Visit Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{ patient.patient_name }}</td>
+                    <td>{{ patient.department }}</td>
+                    <td>{{ patient.doctor_name }}</td>
+                    <td>{{ patient.diagnosis }}</td>
+                    <td>{{ patient.status }}</td>
+                    <td>{{ patient.visit_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
